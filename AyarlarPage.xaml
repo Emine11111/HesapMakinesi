@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HesapMakinesi.AyarlarPage"
+             Title="Ayarlar">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="{StaticResource AyarDolgu}" Spacing="{StaticResource AyarAraligi}">
+
+            <Label Text="Ayarlar" Style="{StaticResource SayfaBaslik}" />
+
+            <!-- GÖRÜNÜM: tema seçimi -->
+            <Label Text="Görünüm" Style="{StaticResource BolumBaslik}" />
+            <Border Style="{StaticResource AyarKart}">
+                <VerticalStackLayout Spacing="{StaticResource AyarAraligi}">
+                    <Label Text="Uygulama teması" Style="{StaticResource AyarBaslik}" />
+                    <Label Text="Görüntülenecek uygulama temasını seçin" Style="{StaticResource AciklamaMetni}" />
+
+                    <!-- Aynı GroupName: üçünden yalnız biri seçilebilir -->
+                    <VerticalStackLayout RadioButtonGroup.GroupName="tema">
+                        <RadioButton x:Name="AcikRadio" Content="Açık" Value="Acik" CheckedChanged="Tema_CheckedChanged" />
+                        <RadioButton x:Name="KoyuRadio" Content="Koyu" Value="Koyu" CheckedChanged="Tema_CheckedChanged" />
+                        <RadioButton x:Name="SistemRadio" Content="Sistem ayarını kullan" Value="Sistem" CheckedChanged="Tema_CheckedChanged" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- HAKKINDA -->
+            <Label Text="Hakkında" Style="{StaticResource BolumBaslik}" />
+            <Border Style="{StaticResource AyarKart}">
+                <VerticalStackLayout>
+                    <Label Text="Hesap Makinesi" Style="{StaticResource AyarBaslik}" />
+                    <Label x:Name="SurumLabel" Style="{StaticResource AciklamaMetni}" />
+                    <Label Text="BSM352 Görsel Programlama · Ödev 1" Style="{StaticResource AciklamaMetni}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

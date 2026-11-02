@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HesapMakinesi.StandartPage"
+             Title="Standart">
+
+    <!-- Sayfa iskeleti: üstte ekran, ortada hafıza satırı, altta tuş takımı -->
+    <Grid RowDefinitions="2*,Auto,7*"
+          Padding="{StaticResource SayfaDolgu}"
+          RowSpacing="{StaticResource TusAraligi}">
+
+        <!-- 1) EKRAN: üstte işlem satırı, altta büyük sonuç -->
+        <VerticalStackLayout Grid.Row="0" VerticalOptions="End">
+            <Label x:Name="IfadeLabel" Style="{StaticResource EkranIfade}" />
+            <Label x:Name="SonucLabel" Text="0" Style="{StaticResource EkranSonuc}" />
+        </VerticalStackLayout>
+
+        <!-- 2) HAFIZA SATIRI -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*,*,*" ColumnSpacing="{StaticResource TusAraligi}">
+            <Button x:Name="McButon" Text="MC" CommandParameter="MC" Style="{StaticResource HafizaTus}" Clicked="Hafiza_Clicked"
+                    SemanticProperties.Description="Hafızayı temizle" />
+            <Button x:Name="MrButon" Grid.Column="1" Text="MR" CommandParameter="MR" Style="{StaticResource HafizaTus}" Clicked="Hafiza_Clicked"
+                    SemanticProperties.Description="Hafızadaki sayıyı getir" />
+            <Button Grid.Column="2" Text="M+" CommandParameter="M+" Style="{StaticResource HafizaTus}" Clicked="Hafiza_Clicked"
+                    SemanticProperties.Description="Hafızaya ekle" />
+            <Button Grid.Column="3" Text="M−" CommandParameter="M-" Style="{StaticResource HafizaTus}" Clicked="Hafiza_Clicked"
+                    SemanticProperties.Description="Hafızadan çıkar" />
+            <Button Grid.Column="4" Text="MS" CommandParameter="MS" Style="{StaticResource HafizaTus}" Clicked="Hafiza_Clicked"
+                    SemanticProperties.Description="Hafızaya kaydet" />
+        </Grid>
+
+        <!-- 3) TUŞ TAKIMI: 6 satır × 4 sütun. Style yazılmayan tuşlara ÖRTÜK stil uygulanır -->
+        <Grid Grid.Row="2"
+              RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*"
+              RowSpacing="{StaticResource TusAraligi}" ColumnSpacing="{StaticResource TusAraligi}">
+
+            <!-- Satır 0 -->
+            <Button Text="%" Clicked="Yuzde_Clicked" SemanticProperties.Description="Yüzde" />
+            <Button Grid.Column="1" Text="CE" Clicked="GirisiTemizle_Clicked" SemanticProperties.Description="Girişi temizle" />
+            <Button Grid.Column="2" Text="C" Clicked="Temizle_Clicked" SemanticProperties.Description="Tümünü temizle" />
+            <Button Grid.Column="3" Text="⌫" Clicked="GeriSil_Clicked" SemanticProperties.Description="Son rakamı sil" />
+
+            <!-- Satır 1 -->
+            <Button Grid.Row="1" Text="1/x" CommandParameter="tersi" Clicked="Tekli_Clicked" SemanticProperties.Description="Çarpmaya göre ters" />
+            <Button Grid.Row="1" Grid.Column="1" Text="x²" CommandParameter="kare" Clicked="Tekli_Clicked" SemanticProperties.Description="Kare" />
+            <Button Grid.Row="1" Grid.Column="2" Text="²√x" CommandParameter="karekok" Clicked="Tekli_Clicked" SemanticProperties.Description="Karekök" />
+            <Button Grid.Row="1" Grid.Column="3" Text="÷" CommandParameter="/" Style="{StaticResource IslemTus}" Clicked="Islem_Clicked" SemanticProperties.Description="Bölme" />
+
+            <!-- Satır 2 -->
+            <Button Grid.Row="2" Text="7" CommandParameter="7" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="2" Grid.Column="1" Text="8" CommandParameter="8" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="2" Grid.Column="2" Text="9" CommandParameter="9" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="2" Grid.Column="3" Text="×" CommandParameter="*" Style="{StaticResource IslemTus}" Clicked="Islem_Clicked" SemanticProperties.Description="Çarpma" />
+
+            <!-- Satır 3 -->
+            <Button Grid.Row="3" Text="4" CommandParameter="4" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="3" Grid.Column="1" Text="5" CommandParameter="5" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="3" Grid.Column="2" Text="6" CommandParameter="6" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="3" Grid.Column="3" Text="−" CommandParameter="-" Style="{StaticResource IslemTus}" Clicked="Islem_Clicked" SemanticProperties.Description="Çıkarma" />
+
+            <!-- Satır 4 -->
+            <Button Grid.Row="4" Text="1" CommandParameter="1" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="4" Grid.Column="1" Text="2" CommandParameter="2" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="4" Grid.Column="2" Text="3" CommandParameter="3" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="4" Grid.Column="3" Text="+" CommandParameter="+" Style="{StaticResource IslemTus}" Clicked="Islem_Clicked" SemanticProperties.Description="Toplama" />
+
+            <!-- Satır 5 -->
+            <Button Grid.Row="5" Text="+/−" Style="{StaticResource RakamTus}" Clicked="Isaret_Clicked" SemanticProperties.Description="İşaret değiştir" />
+            <Button Grid.Row="5" Grid.Column="1" Text="0" CommandParameter="0" Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" />
+            <Button Grid.Row="5" Grid.Column="2" Text="," CommandParameter="," Style="{StaticResource RakamTus}" Clicked="Rakam_Clicked" SemanticProperties.Description="Ondalık virgül" />
+            <Button Grid.Row="5" Grid.Column="3" Text="=" Style="{StaticResource EsittirTus}" Clicked="Esittir_Clicked" SemanticProperties.Description="Eşittir" />
+        </Grid>
+    </Grid>
+</ContentPage>

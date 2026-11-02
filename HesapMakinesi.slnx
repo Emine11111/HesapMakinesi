@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="HesapMakinesi.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

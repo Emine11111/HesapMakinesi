@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- ================= 1) ÖLÇÜLER: sayfalarda sabit sayı yazmamak için ================= -->
+    <x:Double x:Key="EkranYaziBoyu">46</x:Double>
+    <x:Double x:Key="EkranKucukYaziBoyu">28</x:Double>
+    <x:Double x:Key="IfadeYaziBoyu">15</x:Double>
+    <x:Double x:Key="TusYaziBoyu">16</x:Double>
+    <x:Double x:Key="RakamYaziBoyu">20</x:Double>
+    <x:Double x:Key="KucukYaziBoyu">13</x:Double>
+    <x:Double x:Key="BaslikYaziBoyu">28</x:Double>
+    <x:Double x:Key="BolumYaziBoyu">18</x:Double>
+    <x:Double x:Key="TusAraligi">3</x:Double>
+    <x:Double x:Key="AyarAraligi">12</x:Double>
+    <Thickness x:Key="SayfaDolgu">6</Thickness>
+    <Thickness x:Key="AyarDolgu">24,16</Thickness>
+
+    <!-- ================= 2) SAYFA ve KABUK (örtük stiller) ================= -->
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmSayfaAcik}, Dark={StaticResource HmSayfaKoyu}}" />
+    </Style>
+
+    <Style TargetType="Shell" ApplyToDerivedTypes="True">
+        <Setter Property="Shell.BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmSayfaAcik}, Dark={StaticResource HmSayfaKoyu}}" />
+        <Setter Property="Shell.ForegroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+        <Setter Property="Shell.TitleColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+        <Setter Property="Shell.UnselectedColor"
+                Value="{AppThemeBinding Light={StaticResource HmIkincilMetinAcik}, Dark={StaticResource HmIkincilMetinKoyu}}" />
+        <Setter Property="Shell.NavBarHasShadow" Value="False" />
+    </Style>
+
+    <!-- ================= 3) METİN ve KART STİLLERİ (açık / x:Key'li) ================= -->
+    <Style x:Key="EkranSonuc" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="{StaticResource EkranYaziBoyu}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
+        <Setter Property="MaxLines" Value="1" />
+        <Setter Property="LineBreakMode" Value="NoWrap" />
+        <Setter Property="Padding" Value="8,0" />
+    </Style>
+
+    <Style x:Key="EkranSonucKucuk" TargetType="Label" BasedOn="{StaticResource EkranSonuc}">
+        <Setter Property="FontSize" Value="{StaticResource EkranKucukYaziBoyu}" />
+    </Style>
+
+    <Style x:Key="EkranIfade" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource IfadeYaziBoyu}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmIkincilMetinAcik}, Dark={StaticResource HmIkincilMetinKoyu}}" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
+        <Setter Property="MaxLines" Value="1" />
+        <Setter Property="LineBreakMode" Value="HeadTruncation" />
+        <Setter Property="Padding" Value="8,0" />
+    </Style>
+
+    <Style x:Key="MenuBaslik" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="{StaticResource BolumYaziBoyu}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+        <Setter Property="Padding" Value="16,24,16,12" />
+    </Style>
+
+    <Style x:Key="SayfaBaslik" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="{StaticResource BaslikYaziBoyu}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+    </Style>
+
+    <Style x:Key="BolumBaslik" TargetType="Label" BasedOn="{StaticResource SayfaBaslik}">
+        <Setter Property="FontSize" Value="{StaticResource BolumYaziBoyu}" />
+        <Setter Property="Margin" Value="0,8,0,0" />
+    </Style>
+
+    <Style x:Key="AyarBaslik" TargetType="Label" BasedOn="{StaticResource SayfaBaslik}">
+        <Setter Property="FontSize" Value="{StaticResource TusYaziBoyu}" />
+    </Style>
+
+    <Style x:Key="AciklamaMetni" TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource KucukYaziBoyu}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmIkincilMetinAcik}, Dark={StaticResource HmIkincilMetinKoyu}}" />
+    </Style>
+
+    <Style x:Key="AyarKart" TargetType="Border">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmKartAcik}, Dark={StaticResource HmKartKoyu}}" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+        <Setter Property="Padding" Value="16" />
+    </Style>
+
+    <Style TargetType="RadioButton">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource TusYaziBoyu}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+
+    <!-- ================= 4) TUŞ STİLLERİ ================= -->
+    <!-- ORTAK TEMEL STİL (x:Key'li): tüm tuşların ortak ölçüleri ve basılma efektleri -->
+    <Style x:Key="TusTemel" TargetType="Button">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="{StaticResource TusYaziBoyu}" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="MinimumHeightRequest" Value="36" />
+        <Setter Property="MinimumWidthRequest" Value="40" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Normal" />
+                    <VisualState Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.85" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.65" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.35" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- İşlev tuşları (%, CE, x², sin...) -->
+    <Style x:Key="FonksiyonTus" TargetType="Button" BasedOn="{StaticResource TusTemel}">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmFonksiyonAcik}, Dark={StaticResource HmFonksiyonKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+    </Style>
+
+    <!-- ÖRTÜK STİL (x:Key YOK): Style yazılmayan TÜM butonlara otomatik uygulanır -->
+    <Style TargetType="Button" BasedOn="{StaticResource FonksiyonTus}" />
+
+    <!-- RAKAM tuşları -->
+    <Style x:Key="RakamTus" TargetType="Button" BasedOn="{StaticResource TusTemel}">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="{StaticResource RakamYaziBoyu}" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmRakamAcik}, Dark={StaticResource HmRakamKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+    </Style>
+
+    <!-- İŞLEM tuşları (+ − × ÷) -->
+    <Style x:Key="IslemTus" TargetType="Button" BasedOn="{StaticResource TusTemel}">
+        <Setter Property="FontSize" Value="{StaticResource RakamYaziBoyu}" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmIslemAcik}, Dark={StaticResource HmIslemKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+    </Style>
+
+    
+    <Style x:Key="EsittirTus" TargetType="Button" BasedOn="{StaticResource TusTemel}">
+        <Setter Property="FontSize" Value="{StaticResource RakamYaziBoyu}" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmVurguAcik}, Dark={StaticResource HmVurguKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmVurguMetinAcik}, Dark={StaticResource HmVurguMetinKoyu}}" />
+    </Style>
+
+   
+    <Style x:Key="HafizaTus" TargetType="Button" BasedOn="{StaticResource TusTemel}">
+        <Setter Property="FontSize" Value="{StaticResource KucukYaziBoyu}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmMetinAcik}, Dark={StaticResource HmMetinKoyu}}" />
+    </Style>
+
+    <Style x:Key="SecenekTus" TargetType="Button" BasedOn="{StaticResource HafizaTus}">
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="MinimumWidthRequest" Value="56" />
+    </Style>
+
+    <Style x:Key="AktifTus" TargetType="Button" BasedOn="{StaticResource TusTemel}">
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="MinimumWidthRequest" Value="56" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource HmVurguAcik}, Dark={StaticResource HmVurguKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource HmVurguMetinAcik}, Dark={StaticResource HmVurguMetinKoyu}}" />
+    </Style>
+</ResourceDictionary>
