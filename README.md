@@ -2,7 +2,7 @@
 
 **Öğrenci:** [Emine Özüdoğru] – [22010310062]
 
- **Video:** (eklenecek)
+ **Video:** https://ogrencibartinedu-my.sharepoint.com/:v:/g/personal/22010310062_ogrenci_bartin_edu_tr/IQAluJ-09RBUSrpI7phAyrjiAdm1Oo51oA7-uySe0uijjfM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=adl7kX
 
 Windows Hesap Makinesi'nin Standart ve Bilimsel modları ile tema seçilebilen Ayarlar sayfası, .NET MAUI (.NET 10) ve XAML ile geliştirilmiştir.
 
